@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Formation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gA-yT-4J1">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="315"/>
+                            </skView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXu-SH-uGg">
+                                <rect key="frame" x="572" y="329" width="79" height="30"/>
+                                <state key="normal" title="Add Person"/>
+                                <connections>
+                                    <action selector="addPerson" destination="BV1-FR-VrT" eventType="touchUpInside" id="HEK-BC-f5J"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5g-vw-4dH">
+                                <rect key="frame" x="510" y="329" width="46" height="30"/>
+                                <state key="normal" title="Debug"/>
+                                <connections>
+                                    <action selector="debug" destination="BV1-FR-VrT" eventType="touchUpInside" id="KzS-Bt-iX6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="7gA-yT-4J1" secondAttribute="trailing" id="5fU-b2-tpF"/>
+                            <constraint firstItem="PXu-SH-uGg" firstAttribute="leading" secondItem="E5g-vw-4dH" secondAttribute="trailing" constant="16" id="7k0-dZ-oNa"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="7gA-yT-4J1" secondAttribute="bottom" constant="60" id="GMV-Ak-V9f"/>
+                            <constraint firstItem="7gA-yT-4J1" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="c46-p8-1Jc"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="PXu-SH-uGg" secondAttribute="bottom" constant="16" id="dw0-Nl-vmH"/>
+                            <constraint firstItem="7gA-yT-4J1" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" id="mZb-yY-AWz"/>
+                            <constraint firstItem="E5g-vw-4dH" firstAttribute="centerY" secondItem="PXu-SH-uGg" secondAttribute="centerY" id="oXz-eH-QdF"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="PXu-SH-uGg" secondAttribute="trailing" constant="16" id="u6T-o8-sYh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                    </view>
+                    <connections>
+                        <outlet property="addPersonButton" destination="PXu-SH-uGg" id="NrM-Os-ONs"/>
+                        <outlet property="skView" destination="7gA-yT-4J1" id="cbk-k3-Uvh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.18140929535232" y="133.59999999999999"/>
+        </scene>
+    </scenes>
+</document>
