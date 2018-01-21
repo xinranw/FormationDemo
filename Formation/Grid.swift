@@ -65,12 +65,14 @@ class Grid: SKSpriteNode {
         return SKTexture(image: image!)
     }
     
-    func snapToGrid(node: SKNode, tolerance: CGFloat) {
-        let currentCoordinates = coordinate(for: node.position)
-        // todo: finish this function
+    func closestCoordinatePosition(for position: CGPoint, tolerance: CGFloat) -> CGPoint {
+        let currentCoordinates = coordinate(for: position)
+        let roundedX = round(currentCoordinates.x, toNearest: tolerance)
+        let roundedY = round(currentCoordinates.y, toNearest: tolerance)
+        return self.position(for: CGPoint(x: roundedX, y: roundedY))
     }
     
-    func position(for coordinate: CGPoint) -> CGPoint {
+    private func position(for coordinate: CGPoint) -> CGPoint {
         let offset = blockSize / 2.0 + 0.5
         let x = (coordinate.x - 0.5) * blockSize - (blockSize * CGFloat(cols)) / 2.0 + offset
         let actualCol = CGFloat(rows) - coordinate.y - 0.5
@@ -78,7 +80,7 @@ class Grid: SKSpriteNode {
         return CGPoint(x:x, y:y)
     }
     
-    func coordinate(for point: CGPoint) -> CGPoint {
+    private func coordinate(for point: CGPoint) -> CGPoint {
         let offset = blockSize / 2.0 + 0.5
         let row = (point.x - offset + (blockSize * CGFloat(cols)) / 2.0) / blockSize + 0.5
         let column = CGFloat(rows) - ((point.y - offset + (blockSize * CGFloat(rows)) / 2.0) / blockSize) - 0.5

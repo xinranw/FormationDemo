@@ -87,13 +87,14 @@ class GameScene: SKScene {
     private func createGrid() -> Grid? {
         guard let scene = self.scene else { return nil }
         
-        let screenW = scene.size.width
-        let screenH = scene.size.height
+        let offset: CGFloat = 10.0
+        let gridSize: CGFloat = 30.0
         
-        let gridSize: CGFloat = 40.0
+        let width = scene.size.width - offset
+        let height = scene.size.height - offset
         
-        let rows = Int(screenH / gridSize)
-        let cols = Int(screenW / gridSize)
+        let rows = Int(height / gridSize)
+        let cols = Int(width / gridSize)
         if let newGrid = Grid(gridColor: SKColor.red, blockSize: gridSize, rows:rows, cols:cols) {
             print("Creating a grid with \(rows) rows, \(cols) cols, and a grid size of \(gridSize)")
             newGrid.name = "Grid"
@@ -123,9 +124,9 @@ class GameScene: SKScene {
     
     private func touchUp(atPoint pos : CGPoint) {
         selectedPeople.forEach { (person) in
-            print(person)
-            print("personsPosition \(person.position)")
-            print(self.grid?.coordinate(for: person.position))
+            if let closestCoordinatePoint = self.grid?.closestCoordinatePosition(for: person.position, tolerance: 0.5) {
+                person.position = closestCoordinatePoint
+            }
         }
         selectedPeople.removeAll(keepingCapacity: false)
     }
