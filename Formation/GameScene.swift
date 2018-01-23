@@ -11,52 +11,42 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private(set) var people : [PersonNode] = []
-    private var selectedPeople: [PersonNode] = []
     private(set) var grid: Grid?
+    private(set) var formations: [Formation] = []
+    private var activeFormationIndex: Int = 0
+    private var activeFormation: Formation {
+        return formations[activeFormationIndex]
+    }
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        let newFormation = Formation()
+        formations = [newFormation]
     }
     
     func reset() {
-        self.people.forEach { (person) in
-            person.removeFromParent()
+        if self.grid == nil, let newGrid = self.createGrid() {
+            self.grid = newGrid
+            self.addChild(newGrid)
         }
-        self.grid?.removeAllChildren()
-        self.grid?.removeFromParent()
-        
-        if let grid = createGrid() {
-            self.grid = grid
-            addChild(grid)
-        }
+
+        self.activeFormation.reset()
        
         let person = PersonNode(radius: 10, fillColor: SKColor.red, strokeColor: SKColor.black)
         self.addPerson(person)
     }
     
+    func addPerson(_ person: PersonNode) {
+        self.formations[activeFormationIndex].addPerson(person: person)
+        self.grid?.update(with: self.activeFormation)
+    }
+    
     override func didMove(to view: SKView) {
         print("did move to view: \(view)")
-        // Create shape node to use during mouse interaction
-        //        let w = (self.size.width + self.size.height) * 0.05
-        //        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        //
-        //        if let spinnyNode = self.spinnyNode {
-        //            spinnyNode.lineWidth = 2.5
-        //
-        //            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-        //            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-        //                                              SKAction.fadeOut(withDuration: 0.5),
-        //                                              SKAction.removeFromParent()]))
-        //        }
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //        if let label = self.label {
-        //            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        //        }
-        
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
@@ -107,15 +97,12 @@ class GameScene: SKScene {
         return nil
     }
     
-    func addPerson(_ person: PersonNode) {
-        self.people.append(person)
-        self.grid?.addChild(person)
-    }
-    
     private func touchDown(atPoint pos : CGPoint) {
         if let person = self.nodes(at: pos).first as? PersonNode {
-            selectedPeople.removeAll(keepingCapacity: false)
-            selectedPeople.append(person)
+            self.activeFormation.deselectAllpeople()
+            person.isSelected = true
+//            selectedPeople.removeAll()
+//            selectedPeople.append(person)
         }
     }
     
@@ -123,19 +110,29 @@ class GameScene: SKScene {
     }
     
     private func touchUp(atPoint pos : CGPoint) {
-        selectedPeople.forEach { (person) in
+        self.activeFormation.selectedPersons.forEach { person in
             if let closestCoordinatePoint = self.grid?.closestCoordinatePosition(for: person.position, tolerance: 0.5) {
                 person.position = closestCoordinatePoint
             }
+            person.isSelected = false
         }
-        selectedPeople.removeAll(keepingCapacity: false)
+//        selectedPeople.forEach { (person) in
+//            if let closestCoordinatePoint = self.grid?.closestCoordinatePosition(for: person.position, tolerance: 0.5) {
+//                person.position = closestCoordinatePoint
+//            }
+//        }
+//        selectedPeople.removeAll(keepingCapacity: false)
     }
     
     private func panForTranslation(translation: CGPoint) {
-        selectedPeople.forEach { (person) in
+        self.activeFormation.selectedPersons.forEach { person in
             let position = person.position
             person.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
         }
+//        selectedPeople.forEach { (person) in
+//            let position = person.position
+//            person.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
+//        }
     }
 }
 

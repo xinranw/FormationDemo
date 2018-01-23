@@ -65,6 +65,14 @@ class Grid: SKSpriteNode {
         return SKTexture(image: image!)
     }
     
+    // can improve by diff-ing
+    func update(with formation: Formation) {
+        self.removeAllChildren()
+        for person in formation.persons {
+            self.addChild(person)
+        }
+    }
+    
     func closestCoordinatePosition(for position: CGPoint, tolerance: CGFloat) -> CGPoint {
         let currentCoordinates = coordinate(for: position)
         let roundedX = round(currentCoordinates.x, toNearest: tolerance)

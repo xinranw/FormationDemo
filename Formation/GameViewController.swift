@@ -50,6 +50,10 @@ class GameViewController: UIViewController {
         print("debug")
     }
     
+    @IBAction func allFormations() {
+        print(String(describing: self.scene?.formations))
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }

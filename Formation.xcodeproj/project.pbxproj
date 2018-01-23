@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B05570FE2016D49300BBCBC3 /* Formation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05570FD2016D49300BBCBC3 /* Formation.swift */; };
 		B09A1BE52013C9D900B140A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A1BE42013C9D900B140A6 /* AppDelegate.swift */; };
 		B09A1BE72013C9D900B140A6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B09A1BE62013C9D900B140A6 /* GameScene.sks */; };
 		B09A1BE92013C9D900B140A6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B09A1BE82013C9D900B140A6 /* Actions.sks */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B05570FD2016D49300BBCBC3 /* Formation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
 		B09A1BE12013C9D800B140A6 /* Formation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Formation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09A1BE42013C9D900B140A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B09A1BE62013C9D900B140A6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				B09A1BE42013C9D900B140A6 /* AppDelegate.swift */,
 				B09A1BE62013C9D900B140A6 /* GameScene.sks */,
 				B09A1BE82013C9D900B140A6 /* Actions.sks */,
+				B05570FD2016D49300BBCBC3 /* Formation.swift */,
 				B09A1BEA2013C9D900B140A6 /* GameScene.swift */,
 				B09A1BEC2013C9D900B140A6 /* GameViewController.swift */,
 				B09A1C182013CA1A00B140A6 /* Grid.swift */,
@@ -286,6 +289,7 @@
 				B09A1BEB2013C9D900B140A6 /* GameScene.swift in Sources */,
 				B09A1C1B2013CC5900B140A6 /* PersonNode.swift in Sources */,
 				B09A1BED2013C9D900B140A6 /* GameViewController.swift in Sources */,
+				B05570FE2016D49300BBCBC3 /* Formation.swift in Sources */,
 				B09A1BE52013C9D900B140A6 /* AppDelegate.swift in Sources */,
 				B09A1C192013CA1A00B140A6 /* Grid.swift in Sources */,
 				B09A1C232013F4D100B140A6 /* Utils.swift in Sources */,

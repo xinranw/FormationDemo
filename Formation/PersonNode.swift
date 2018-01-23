@@ -11,6 +11,7 @@ import SpriteKit
 class PersonNode: SKShapeNode {
     
     var personName: String = ""
+    var isSelected: Bool = false
     
     init(radius: CGFloat, fillColor: SKColor, strokeColor: SKColor) {
         super.init()
