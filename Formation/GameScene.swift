@@ -24,7 +24,7 @@ class GameScene: SKScene {
         formations = [newFormation]
     }
     
-    func reset() {
+    func resetScene() {
         if self.grid == nil, let newGrid = self.createGrid() {
             self.grid = newGrid
             self.addChild(newGrid)
@@ -39,6 +39,14 @@ class GameScene: SKScene {
     func addPerson(_ person: PersonNode) {
         self.formations[activeFormationIndex].addPerson(person: person)
         self.grid?.update(with: self.activeFormation)
+    }
+    
+    func newFormation() {
+        activeFormationIndex += 1
+        let newFormation = Formation()
+        newFormation.index = activeFormationIndex
+        formations.append(newFormation)
+        resetScene()
     }
     
     override func didMove(to view: SKView) {

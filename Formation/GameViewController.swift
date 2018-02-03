@@ -29,7 +29,7 @@ class GameViewController: UIViewController {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
-                scene.reset()
+                scene.resetScene()
                 
                 // Present the scene
                 skView.presentScene(scene)
@@ -46,12 +46,18 @@ class GameViewController: UIViewController {
         scene?.addPerson(PersonNode(radius: 10, fillColor: SKColor.red, strokeColor: SKColor.black))
     }
     
+    @IBAction func newFormation() {
+        scene?.newFormation()
+    }
+    
     @IBAction func debug() {
         print("debug")
     }
     
     @IBAction func allFormations() {
-        print(String(describing: self.scene?.formations))
+        if let scene = scene {
+            print(String(describing: scene.formations))
+        }
     }
     
     override var shouldAutorotate: Bool {

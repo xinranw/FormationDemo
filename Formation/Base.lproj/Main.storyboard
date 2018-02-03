@@ -42,6 +42,13 @@
                                     <action selector="allFormations" destination="BV1-FR-VrT" eventType="touchUpInside" id="ZBm-xT-X0N"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkO-4w-Edf">
+                                <rect key="frame" x="276" y="329" width="104" height="30"/>
+                                <state key="normal" title="New Formation"/>
+                                <connections>
+                                    <action selector="newFormation" destination="BV1-FR-VrT" eventType="touchUpInside" id="kXx-K4-SAC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -50,10 +57,12 @@
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="7gA-yT-4J1" secondAttribute="bottom" constant="60" id="GMV-Ak-V9f"/>
                             <constraint firstItem="Lzr-48-rVp" firstAttribute="centerY" secondItem="E5g-vw-4dH" secondAttribute="centerY" id="L0U-MI-4bI"/>
                             <constraint firstItem="E5g-vw-4dH" firstAttribute="leading" secondItem="Lzr-48-rVp" secondAttribute="trailing" constant="16" id="Z8m-PC-aVh"/>
+                            <constraint firstItem="Lzr-48-rVp" firstAttribute="leading" secondItem="dkO-4w-Edf" secondAttribute="trailing" constant="16" id="a19-KA-8QK"/>
                             <constraint firstItem="7gA-yT-4J1" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="c46-p8-1Jc"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="PXu-SH-uGg" secondAttribute="bottom" constant="16" id="dw0-Nl-vmH"/>
                             <constraint firstItem="7gA-yT-4J1" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" id="mZb-yY-AWz"/>
                             <constraint firstItem="E5g-vw-4dH" firstAttribute="centerY" secondItem="PXu-SH-uGg" secondAttribute="centerY" id="oXz-eH-QdF"/>
+                            <constraint firstItem="dkO-4w-Edf" firstAttribute="centerY" secondItem="Lzr-48-rVp" secondAttribute="centerY" id="r01-dV-YfN"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="PXu-SH-uGg" secondAttribute="trailing" constant="16" id="u6T-o8-sYh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>

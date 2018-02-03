@@ -9,6 +9,7 @@
 import UIKit
 
 class Formation {
+    var index: Int = 0
     private(set) var persons: [PersonNode] = []
     var selectedPersons: [PersonNode] {
         return persons.filter { return $0.isSelected }
@@ -34,8 +35,9 @@ class Formation {
 
 extension Formation: CustomStringConvertible {
     var description: String {
-        return self.persons.map { person in
+        let personsStr = self.persons.map { person in
             return person.description
-        }.joined(separator: ", ")
+            }.joined(separator: ", ")
+        return "Formation index: \(self.index) \(personsStr)\n"
     }
 }
