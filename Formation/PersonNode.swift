@@ -47,6 +47,7 @@ class PersonNode: SKShapeNode {
         }
     }
     var isSelected: Bool = false
+    
     private let nameLabel: SKLabelNode = SKLabelNode()
     
     init(person: Person, radius: CGFloat = 10.0, fillColor: SKColor = UIColor.black, strokeColor: SKColor = UIColor.white) {

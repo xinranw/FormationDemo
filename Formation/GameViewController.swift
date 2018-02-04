@@ -9,16 +9,25 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import FontAwesome_swift
 
 class GameViewController: UIViewController {
     
     @IBOutlet private weak var skView: SKView?
     @IBOutlet private weak var addPersonButton: UIButton?
+    @IBOutlet private weak var leftButton: UIButton?
+    @IBOutlet private weak var rightButton: UIButton?
     
     private var scene: GameScene?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.leftButton?.titleLabel?.font = UIFont.fontAwesome(ofSize: 24)
+        self.leftButton?.setTitle(String.fontAwesomeIcon(name: .chevronLeft), for: .normal)
+        self.rightButton?.titleLabel?.font = UIFont.fontAwesome(ofSize: 24)
+        self.rightButton?.setTitle(String.fontAwesomeIcon(name: .chevronRight), for: .normal)
+        
         
         if let skView = self.skView {
             // Load the SKScene from 'GameScene.sks'
@@ -56,8 +65,16 @@ class GameViewController: UIViewController {
     
     @IBAction func allFormations() {
         if let scene = scene {
-            print(String(describing: scene.formations))
+            print(scene.formations)
         }
+    }
+    
+    @IBAction func leftButtonTapped() {
+        self.scene?.showPreviousFormation()
+    }
+    
+    @IBAction func rightButtonTapped() {
+        self.scene?.showNextFormation()
     }
     
     override var shouldAutorotate: Bool {

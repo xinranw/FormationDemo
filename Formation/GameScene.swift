@@ -13,7 +13,8 @@ class GameScene: SKScene {
     
     private(set) var grid: Grid?
     private(set) var formations: [Formation] = []
-    private(set) var people: [Person] = []
+    
+    private var people: [Person] = []
     private var activeFormationIndex: Int = 0
     private var activeFormation: Formation {
         return formations[activeFormationIndex]
@@ -52,12 +53,25 @@ class GameScene: SKScene {
         let newFormation = Formation()
         newFormation.index = activeFormationIndex + 1
         for (person, node) in activeFormation.personNodes {
-            print("Adding new person \(person) at \(node.position)")
             newFormation.addPerson(person: person, at: node.position)
         }
         activeFormationIndex += 1
         formations.append(newFormation)
         resetScene()
+    }
+    
+    func showPreviousFormation() {
+        if activeFormationIndex > 0 {
+            activeFormationIndex -= 1
+            self.grid?.update(with: self.activeFormation)
+        }
+    }
+    
+    func showNextFormation() {
+        if activeFormationIndex < self.formations.count - 1 {
+            activeFormationIndex += 1
+            self.grid?.update(with: self.activeFormation)
+        }
     }
     
     override func didMove(to view: SKView) {

@@ -69,7 +69,6 @@ class Grid: SKSpriteNode {
     func update(with formation: Formation) {
         self.removeAllChildren()
         for person in formation.nodes {
-            print("Adding \(person)")
             self.addChild(person)
         }
     }
