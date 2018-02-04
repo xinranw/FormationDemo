@@ -10,6 +10,7 @@
 		4BB5E2DC8755F431551F3610 /* Pods_FormationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDE15B96D6DDA424013FA3D /* Pods_FormationTests.framework */; };
 		694EC634264BD9167D1308DD /* Pods_FormationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AF0D832C084B73AA12622F /* Pods_FormationUITests.framework */; };
 		B05570FE2016D49300BBCBC3 /* Formation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05570FD2016D49300BBCBC3 /* Formation.swift */; };
+		B059AE822027718300D86955 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059AE812027718300D86955 /* StyleGuide.swift */; };
 		B09A1BE52013C9D900B140A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A1BE42013C9D900B140A6 /* AppDelegate.swift */; };
 		B09A1BE72013C9D900B140A6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B09A1BE62013C9D900B140A6 /* GameScene.sks */; };
 		B09A1BE92013C9D900B140A6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B09A1BE82013C9D900B140A6 /* Actions.sks */; };
@@ -56,6 +57,7 @@
 		958130E51ABA8BE813190A93 /* Pods-Formation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Formation/Pods-Formation.debug.xcconfig"; sourceTree = "<group>"; };
 		9E78A9409DC0DCBB2EEC667E /* Pods-FormationUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormationUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FormationUITests/Pods-FormationUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B05570FD2016D49300BBCBC3 /* Formation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
+		B059AE812027718300D86955 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		B09A1BE12013C9D800B140A6 /* Formation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Formation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09A1BE42013C9D900B140A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B09A1BE62013C9D900B140A6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				B09A1BE42013C9D900B140A6 /* AppDelegate.swift */,
+				B059AE812027718300D86955 /* StyleGuide.swift */,
 				B09A1BE62013C9D900B140A6 /* GameScene.sks */,
 				B09A1BE82013C9D900B140A6 /* Actions.sks */,
 				B05570FD2016D49300BBCBC3 /* Formation.swift */,
@@ -487,6 +490,7 @@
 			files = (
 				B09A1BEB2013C9D900B140A6 /* GameScene.swift in Sources */,
 				B09A1C1B2013CC5900B140A6 /* PersonNode.swift in Sources */,
+				B059AE822027718300D86955 /* StyleGuide.swift in Sources */,
 				B09A1BED2013C9D900B140A6 /* GameViewController.swift in Sources */,
 				B05570FE2016D49300BBCBC3 /* Formation.swift in Sources */,
 				B09A1BE52013C9D900B140A6 /* AppDelegate.swift in Sources */,

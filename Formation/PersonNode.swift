@@ -50,7 +50,7 @@ class PersonNode: SKShapeNode {
     
     private let nameLabel: SKLabelNode = SKLabelNode()
     
-    init(person: Person, radius: CGFloat = 10.0, fillColor: SKColor = UIColor.black, strokeColor: SKColor = UIColor.white) {
+    init(person: Person, radius: CGFloat = 10.0) {
         self.person = person
         
         super.init()
@@ -58,10 +58,10 @@ class PersonNode: SKShapeNode {
         self.fillColor = fillColor
         self.strokeColor = strokeColor
         
-        self.nameLabel.fontName = "Avenir-Medium"
+        self.nameLabel.fontName = StyleGuide.personLabelFont
         self.nameLabel.text = self.person.initials
         self.nameLabel.fontSize = 12
-        self.nameLabel.fontColor = UIColor.white
+        self.nameLabel.fontColor = StyleGuide.personLabelColor
         self.nameLabel.position = CGPoint(x: self.frame.midX, y: 10)
         self.addChild(self.nameLabel)
     }

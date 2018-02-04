@@ -9,30 +9,40 @@
 import SpriteKit
 
 class Grid: SKSpriteNode {
+    private typealias GridColors = (lineColor: SKColor, backgroundColor: SKColor)
     
-    private var rows: Int!
-    private var cols: Int!
-    private var blockSize: CGFloat!
-    private var gridColor: SKColor! {
+    private var rows: Int?
+    private var cols: Int?
+    private var blockSize: CGFloat?
+    private var colors: GridColors? {
         didSet {
-            if let texture = Grid.gridTexture(gridColor: gridColor, blockSize: blockSize,rows: rows, cols:cols) {
+            if let colors = colors, let blockSize = blockSize, let rows = rows, let cols = cols,
+                let texture = Grid.gridTexture(gridColor: colors.lineColor,
+                                              gridBackgroundColor: colors.backgroundColor,
+                                              blockSize: blockSize,
+                                              rows: rows,
+                                              cols:cols) {
                 self.texture = texture
             }
         }
     }
     
-    convenience init?(gridColor: SKColor, blockSize:CGFloat, rows:Int, cols:Int) {
-        guard let texture = Grid.gridTexture(gridColor: gridColor, blockSize: blockSize, rows: rows, cols:cols) else {
+    convenience init?(gridLineColor: SKColor, gridBackgroundColor: SKColor, blockSize:CGFloat, rows:Int, cols:Int) {
+        guard let texture = Grid.gridTexture(gridColor: gridLineColor,
+                                             gridBackgroundColor: gridBackgroundColor,
+                                             blockSize: blockSize,
+                                             rows: rows,
+                                             cols:cols) else {
             return nil
         }
-        self.init(texture: texture, color:SKColor.clear, size: texture.size())
-        self.gridColor = gridColor
+        self.init(texture: texture, color:gridBackgroundColor, size: texture.size())
+        self.colors = GridColors(lineColor: gridLineColor, backgroundColor: gridBackgroundColor)
         self.blockSize = blockSize
         self.rows = rows
         self.cols = cols
     }
     
-    class func gridTexture(gridColor: SKColor, blockSize:CGFloat, rows:Int, cols:Int) -> SKTexture? {
+    private class func gridTexture(gridColor: SKColor, gridBackgroundColor: SKColor, blockSize:CGFloat, rows:Int, cols:Int) -> SKTexture? {
         // Add 1 to the height and width to ensure the borders are within the sprite
         let size = CGSize(width: CGFloat(cols) * blockSize + 1.0,
                           height: CGFloat(rows) * blockSize + 1.0)
@@ -73,14 +83,16 @@ class Grid: SKSpriteNode {
         }
     }
     
-    func closestCoordinatePosition(for position: CGPoint, tolerance: CGFloat) -> CGPoint {
-        let currentCoordinates = coordinate(for: position)
+    func closestCoordinatePosition(for position: CGPoint, tolerance: CGFloat) -> CGPoint? {
+        guard let currentCoordinates = coordinate(for: position) else { return nil }
         let roundedX = round(currentCoordinates.x, toNearest: tolerance)
         let roundedY = round(currentCoordinates.y, toNearest: tolerance)
         return self.position(for: CGPoint(x: roundedX, y: roundedY))
     }
     
-    private func position(for coordinate: CGPoint) -> CGPoint {
+    private func position(for coordinate: CGPoint) -> CGPoint? {
+        guard let blockSize = blockSize, let rows = rows, let cols = cols else { return nil }
+        
         let offset = blockSize / 2.0 + 0.5
         let x = (coordinate.x - 0.5) * blockSize - (blockSize * CGFloat(cols)) / 2.0 + offset
         let actualCol = CGFloat(rows) - coordinate.y - 0.5
@@ -88,7 +100,9 @@ class Grid: SKSpriteNode {
         return CGPoint(x:x, y:y)
     }
     
-    private func coordinate(for point: CGPoint) -> CGPoint {
+    private func coordinate(for point: CGPoint) -> CGPoint? {
+        guard let blockSize = blockSize, let rows = rows, let cols = cols else { return nil }
+        
         let offset = blockSize / 2.0 + 0.5
         let row = (point.x - offset + (blockSize * CGFloat(cols)) / 2.0) / blockSize + 0.5
         let column = CGFloat(rows) - ((point.y - offset + (blockSize * CGFloat(rows)) / 2.0) / blockSize) - 0.5

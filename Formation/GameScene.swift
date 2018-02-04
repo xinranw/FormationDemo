@@ -118,11 +118,14 @@ class GameScene: SKScene {
         
         let rows = Int(height / gridSize)
         let cols = Int(width / gridSize)
-        if let newGrid = Grid(gridColor: SKColor.red, blockSize: gridSize, rows:rows, cols:cols) {
+        if let newGrid = Grid(gridLineColor: SKColor(cgColor: StyleGuide.gridLineColor.cgColor),
+                              gridBackgroundColor: SKColor(cgColor: StyleGuide.gridBackgroundColor.cgColor),
+                              blockSize: gridSize,
+                              rows:rows,
+                              cols:cols) {
             print("Creating a grid with \(rows) rows, \(cols) cols, and a grid size of \(gridSize)")
             newGrid.name = "Grid"
             newGrid.position = CGPoint(x:frame.midX, y:frame.midY)
-            newGrid.color = UIColor.red
             
             return newGrid
         }

@@ -23,7 +23,7 @@ class Formation {
     }
     
     func addPerson(person: Person, at position: CGPoint) {
-        let newPersonNode = PersonNode(person: person)
+        let newPersonNode = PersonNode(person: person, radius: 10.0)
         newPersonNode.position = position
         personNodes[person] = newPersonNode
     }
