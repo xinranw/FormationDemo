@@ -10,34 +10,42 @@ import UIKit
 
 class Formation {
     var index: Int = 0
-    private(set) var persons: [PersonNode] = []
+    var persons: [Person] {
+        return Array(personNodes.keys)
+    }
+    var nodes: [PersonNode] {
+        return Array(personNodes.values)
+    }
+    private(set) var personNodes: [Person: PersonNode] = [:]
+    
     var selectedPersons: [PersonNode] {
-        return persons.filter { return $0.isSelected }
+        return personNodes.values.filter { return $0.isSelected }
     }
     
-    func addPerson(person: PersonNode) {
-        persons.append(person)
+    func addPerson(person: Person, at position: CGPoint) {
+        let newPersonNode = PersonNode(person: person)
+        newPersonNode.position = position
+        personNodes[person] = newPersonNode
     }
     
-    func deselectAllpeople() {
-        persons.forEach { person in
+    func deselectAll() {
+        self.selectedPersons.forEach { person in
             person.isSelected = false
         }
     }
     
     func reset() {
-        for person in persons {
-            person.removeFromParent()
+        personNodes.values.forEach { personNode in
+            personNode.removeFromParent()
         }
-        persons.removeAll()
     }
 }
 
 extension Formation: CustomStringConvertible {
     var description: String {
-        let personsStr = self.persons.map { person in
-            return person.description
-            }.joined(separator: ", ")
+        let personsStr = self.personNodes.values
+            .map { $0.description }
+            .joined(separator: ", ")
         return "Formation index: \(self.index) \(personsStr)\n"
     }
 }

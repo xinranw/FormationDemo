@@ -13,6 +13,7 @@ class GameScene: SKScene {
     
     private(set) var grid: Grid?
     private(set) var formations: [Formation] = []
+    private(set) var people: [Person] = []
     private var activeFormationIndex: Int = 0
     private var activeFormation: Formation {
         return formations[activeFormationIndex]
@@ -29,22 +30,32 @@ class GameScene: SKScene {
             self.grid = newGrid
             self.addChild(newGrid)
         }
-
+        
         self.activeFormation.reset()
-       
-        let person = PersonNode(radius: 10, fillColor: SKColor.red, strokeColor: SKColor.black)
-        self.addPerson(person)
+        
+        self.grid?.update(with: self.activeFormation)
     }
     
-    func addPerson(_ person: PersonNode) {
-        self.formations[activeFormationIndex].addPerson(person: person)
+    func newPerson() {
+        let newPerson = Person()
+        newPerson.name = "Person \(self.people.count + 1)"
+        self.addPerson(newPerson)
+    }
+    
+    func addPerson(_ person: Person) {
+        self.people.append(person)
+        self.activeFormation.addPerson(person: person, at: CGPoint.zero)
         self.grid?.update(with: self.activeFormation)
     }
     
     func newFormation() {
-        activeFormationIndex += 1
         let newFormation = Formation()
-        newFormation.index = activeFormationIndex
+        newFormation.index = activeFormationIndex + 1
+        for (person, node) in activeFormation.personNodes {
+            print("Adding new person \(person) at \(node.position)")
+            newFormation.addPerson(person: person, at: node.position)
+        }
+        activeFormationIndex += 1
         formations.append(newFormation)
         resetScene()
     }
@@ -107,7 +118,7 @@ class GameScene: SKScene {
     
     private func touchDown(atPoint pos : CGPoint) {
         if let person = self.nodes(at: pos).first as? PersonNode {
-            self.activeFormation.deselectAllpeople()
+            self.activeFormation.deselectAll()
             person.isSelected = true
 //            selectedPeople.removeAll()
 //            selectedPeople.append(person)
@@ -124,12 +135,6 @@ class GameScene: SKScene {
             }
             person.isSelected = false
         }
-//        selectedPeople.forEach { (person) in
-//            if let closestCoordinatePoint = self.grid?.closestCoordinatePosition(for: person.position, tolerance: 0.5) {
-//                person.position = closestCoordinatePoint
-//            }
-//        }
-//        selectedPeople.removeAll(keepingCapacity: false)
     }
     
     private func panForTranslation(translation: CGPoint) {
@@ -137,10 +142,6 @@ class GameScene: SKScene {
             let position = person.position
             person.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
         }
-//        selectedPeople.forEach { (person) in
-//            let position = person.position
-//            person.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
-//        }
     }
 }
 

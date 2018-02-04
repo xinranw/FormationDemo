@@ -43,7 +43,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func addPerson() {
-        scene?.addPerson(PersonNode(radius: 10, fillColor: SKColor.red, strokeColor: SKColor.black))
+        scene?.newPerson()
     }
     
     @IBAction func newFormation() {

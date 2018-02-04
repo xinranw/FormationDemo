@@ -68,7 +68,8 @@ class Grid: SKSpriteNode {
     // can improve by diff-ing
     func update(with formation: Formation) {
         self.removeAllChildren()
-        for person in formation.persons {
+        for person in formation.nodes {
+            print("Adding \(person)")
             self.addChild(person)
         }
     }
