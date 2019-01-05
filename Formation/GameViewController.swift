@@ -23,9 +23,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.leftButton?.titleLabel?.font = UIFont.fontAwesome(ofSize: 24)
+        self.leftButton?.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .regular)
         self.leftButton?.setTitle(String.fontAwesomeIcon(name: .chevronLeft), for: .normal)
-        self.rightButton?.titleLabel?.font = UIFont.fontAwesome(ofSize: 24)
+        self.rightButton?.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .regular)
         self.rightButton?.setTitle(String.fontAwesomeIcon(name: .chevronRight), for: .normal)
         
         

@@ -17,7 +17,7 @@ class Person {
         if name.contains(" ") {
             let nameComponents = name.split(separator: " ")
             let initials = nameComponents
-                .flatMap { $0.first }
+                .compactMap { $0.first }
                 .map { String($0) }
                 .joined()
                 .uppercased()
