@@ -20,6 +20,7 @@ final class GameScene: SKScene {
 
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        self.backgroundColor = StyleGuide.sceneBackgroundColor
     }
     
     private func update(with formation: Formation) {
@@ -30,7 +31,6 @@ final class GameScene: SKScene {
 
         self.grid?.update(with: formation)
     }
-    
     
     override func didMove(to view: SKView) {
         print("did move to view: \(view)")
@@ -68,7 +68,7 @@ final class GameScene: SKScene {
         guard let scene = self.scene else { return nil }
         
         let offset: CGFloat = 10.0
-        let gridSize: CGFloat = 30.0
+        let gridSize: CGFloat = 20.0
         
         let width = scene.size.width - offset
         let height = scene.size.height - offset

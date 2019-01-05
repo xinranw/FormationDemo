@@ -99,9 +99,9 @@ final class GameViewController: UIViewController {
     }
     
     private func setupUI() {
-        self.leftButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .brands)
+        self.leftButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .solid)
         self.leftButton.setTitle(String.fontAwesomeIcon(name: .chevronLeft), for: .normal)
-        self.rightButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .brands)
+        self.rightButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .solid)
         self.rightButton.setTitle(String.fontAwesomeIcon(name: .chevronRight), for: .normal)
     }
 }

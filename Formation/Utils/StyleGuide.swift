@@ -9,6 +9,8 @@
 import UIKit
 
 class StyleGuide {
+    static var sceneBackgroundColor: UIColor = UIColor.white
+    
     static var gridBackgroundColor: UIColor = UIColor.clear
     static var gridLineColor: UIColor = UIColor.red
     
