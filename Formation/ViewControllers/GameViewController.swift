@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import FontAwesome_swift
+import RxSwift
 
 final class GameViewController: UIViewController {
     @IBOutlet private weak var skView: SKView!
@@ -18,6 +19,7 @@ final class GameViewController: UIViewController {
     @IBOutlet private weak var rightButton: UIButton!
     
     private var scene: GameScene?
+    private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,12 @@ final class GameViewController: UIViewController {
         _ = FormationsManager.shared
         self.setupUI()
         self.setupSceneKitView()
+        
+        FormationsManager.shared.activeFormationObservable
+            .subscribe(onNext: { [weak self] formation in
+                self?.scene?.formation = formation
+            })
+            .disposed(by: self.disposeBag)
     }
     
     @IBAction func addPerson() {
@@ -79,7 +87,7 @@ final class GameViewController: UIViewController {
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             
-            scene.formation = FormationsManager.shared.activeFormation
+//            scene.formation = FormationsManager.shared.activeFormation
             
             // Present the scene
             skView.presentScene(scene)

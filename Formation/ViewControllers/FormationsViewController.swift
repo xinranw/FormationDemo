@@ -1,5 +1,5 @@
 //
-//  FormationsViewController.swift
+//  FormationsListViewController.swift
 //  Formation
 //
 //  Created by Xinran on 1/5/19.
@@ -9,7 +9,7 @@
 import UIKit
 import FontAwesome_swift
 
-final class FormationsViewController: UIViewController {
+final class FormationsListViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var backBarButtonItem: UIBarButtonItem!
     
@@ -18,13 +18,6 @@ final class FormationsViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "formationCell")
-        
-//        let attributes = [
-//            NSAttributedString.Key.font: UIFont.fontAwesome(ofSize: 16, style: .brands)
-//        ]
-//        self.backBarButtonItem.
-//        self.backBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
-//        self.backBarButtonItem.title = String.fontAwesomeIcon(name: .)
     }
     
     @IBAction private func dismissView() {
@@ -32,17 +25,18 @@ final class FormationsViewController: UIViewController {
     }
 }
 
-extension FormationsViewController: UITableViewDelegate {
+extension FormationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         defer {
             tableView.deselectRow(at: indexPath, animated: true)
+            self.dismissView()
         }
         
-        
+        FormationsManager.shared.updateActiveFormation(index: indexPath.row)
     }
 }
 
-extension FormationsViewController: UITableViewDataSource {
+extension FormationsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return FormationsManager.shared.formations.count
     }

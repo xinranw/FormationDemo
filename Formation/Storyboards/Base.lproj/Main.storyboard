@@ -98,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="137.18140929535232" y="133.59999999999999"/>
         </scene>
-        <!--Formations View Controller-->
+        <!--Formations List View Controller-->
         <scene sceneID="HpH-hV-q0D">
             <objects>
-                <viewController id="SmI-PY-Pyv" customClass="FormationsViewController" customModule="Formation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SmI-PY-Pyv" customClass="FormationsListViewController" customModule="Formation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ns0-Rk-b9L">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
