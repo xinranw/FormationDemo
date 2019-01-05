@@ -128,6 +128,41 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B009E41421E13FBF00B0D70C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B09A1BEC2013C9D900B140A6 /* GameViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B009E41521E13FCC00B0D70C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B05570FD2016D49300BBCBC3 /* Formation.swift */,
+				B09A1C1A2013CC5900B140A6 /* PersonNode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B009E41621E13FE600B0D70C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B09A1BEE2013C9D900B140A6 /* Main.storyboard */,
+				B09A1BF32013C9D900B140A6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B009E41721E13FFB00B0D70C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B059AE812027718300D86955 /* StyleGuide.swift */,
+				B09A1C222013F4D100B140A6 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B09A1BD82013C9D800B140A6 = {
 			isa = PBXGroup;
 			children = (
@@ -153,19 +188,16 @@
 		B09A1BE32013C9D900B140A6 /* Formation */ = {
 			isa = PBXGroup;
 			children = (
+				B009E41521E13FCC00B0D70C /* Models */,
+				B009E41621E13FE600B0D70C /* Storyboards */,
+				B009E41721E13FFB00B0D70C /* Utils */,
+				B009E41421E13FBF00B0D70C /* ViewControllers */,
 				B09A1BE42013C9D900B140A6 /* AppDelegate.swift */,
-				B059AE812027718300D86955 /* StyleGuide.swift */,
 				B09A1BE62013C9D900B140A6 /* GameScene.sks */,
 				B09A1BE82013C9D900B140A6 /* Actions.sks */,
-				B05570FD2016D49300BBCBC3 /* Formation.swift */,
 				B09A1BEA2013C9D900B140A6 /* GameScene.swift */,
-				B09A1BEC2013C9D900B140A6 /* GameViewController.swift */,
 				B09A1C182013CA1A00B140A6 /* Grid.swift */,
-				B09A1C1A2013CC5900B140A6 /* PersonNode.swift */,
-				B09A1C222013F4D100B140A6 /* Utils.swift */,
-				B09A1BEE2013C9D900B140A6 /* Main.storyboard */,
 				B09A1BF12013C9D900B140A6 /* Assets.xcassets */,
-				B09A1BF32013C9D900B140A6 /* LaunchScreen.storyboard */,
 				B09A1BF62013C9D900B140A6 /* Info.plist */,
 			);
 			path = Formation;

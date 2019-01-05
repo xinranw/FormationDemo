@@ -13,20 +13,20 @@ import FontAwesome_swift
 
 class GameViewController: UIViewController {
     
-    @IBOutlet private weak var skView: SKView?
-    @IBOutlet private weak var addPersonButton: UIButton?
-    @IBOutlet private weak var leftButton: UIButton?
-    @IBOutlet private weak var rightButton: UIButton?
+    @IBOutlet private weak var skView: SKView!
+    @IBOutlet private weak var addPersonButton: UIButton!
+    @IBOutlet private weak var leftButton: UIButton!
+    @IBOutlet private weak var rightButton: UIButton!
     
     private var scene: GameScene?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.leftButton?.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .regular)
-        self.leftButton?.setTitle(String.fontAwesomeIcon(name: .chevronLeft), for: .normal)
-        self.rightButton?.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .regular)
-        self.rightButton?.setTitle(String.fontAwesomeIcon(name: .chevronRight), for: .normal)
+        self.leftButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .brands)
+        self.leftButton.setTitle(String.fontAwesomeIcon(name: .chevronLeft), for: .normal)
+        self.rightButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .brands)
+        self.rightButton.setTitle(String.fontAwesomeIcon(name: .chevronRight), for: .normal)
         
         
         if let skView = self.skView {
@@ -52,11 +52,11 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func addPerson() {
-        scene?.newPerson()
+        self.scene?.newPerson()
     }
     
     @IBAction func newFormation() {
-        scene?.newFormation()
+        self.scene?.newFormation()
     }
     
     @IBAction func debug() {
