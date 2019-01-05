@@ -10,6 +10,8 @@
 		49C336A3B16AB3CC4FDD2894 /* libPods-FormationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B55024C9F5AF3FF0D3CCF9 /* libPods-FormationTests.a */; };
 		4B4B5DC974F0CE9EC366EBE6 /* libPods-Formation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBE8A37D9E126BD65ED3DC5 /* libPods-Formation.a */; };
 		828780E785B3EF7B36998242 /* libPods-FormationUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23AD95D163ED632FAEDE1B54 /* libPods-FormationUITests.a */; };
+		B009E41921E140B300B0D70C /* FormationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009E41821E140B300B0D70C /* FormationsViewController.swift */; };
+		B009E41B21E1414D00B0D70C /* FormationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009E41A21E1414D00B0D70C /* FormationsManager.swift */; };
 		B05570FE2016D49300BBCBC3 /* Formation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05570FD2016D49300BBCBC3 /* Formation.swift */; };
 		B059AE822027718300D86955 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059AE812027718300D86955 /* StyleGuide.swift */; };
 		B09A1BE52013C9D900B140A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A1BE42013C9D900B140A6 /* AppDelegate.swift */; };
@@ -52,6 +54,8 @@
 		958130E51ABA8BE813190A93 /* Pods-Formation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Formation/Pods-Formation.debug.xcconfig"; sourceTree = "<group>"; };
 		9E78A9409DC0DCBB2EEC667E /* Pods-FormationUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormationUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FormationUITests/Pods-FormationUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ACBE8A37D9E126BD65ED3DC5 /* libPods-Formation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Formation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B009E41821E140B300B0D70C /* FormationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationsViewController.swift; sourceTree = "<group>"; };
+		B009E41A21E1414D00B0D70C /* FormationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationsManager.swift; sourceTree = "<group>"; };
 		B05570FD2016D49300BBCBC3 /* Formation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
 		B059AE812027718300D86955 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		B09A1BE12013C9D800B140A6 /* Formation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Formation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B09A1BEC2013C9D900B140A6 /* GameViewController.swift */,
+				B009E41821E140B300B0D70C /* FormationsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				B09A1BE62013C9D900B140A6 /* GameScene.sks */,
 				B09A1BE82013C9D900B140A6 /* Actions.sks */,
 				B09A1BEA2013C9D900B140A6 /* GameScene.swift */,
+				B009E41A21E1414D00B0D70C /* FormationsManager.swift */,
 				B09A1C182013CA1A00B140A6 /* Grid.swift */,
 				B09A1BF12013C9D900B140A6 /* Assets.xcassets */,
 				B09A1BF62013C9D900B140A6 /* Info.plist */,
@@ -446,11 +452,13 @@
 				B09A1BEB2013C9D900B140A6 /* GameScene.swift in Sources */,
 				B09A1C1B2013CC5900B140A6 /* PersonNode.swift in Sources */,
 				B059AE822027718300D86955 /* StyleGuide.swift in Sources */,
+				B009E41B21E1414D00B0D70C /* FormationsManager.swift in Sources */,
 				B09A1BED2013C9D900B140A6 /* GameViewController.swift in Sources */,
 				B05570FE2016D49300BBCBC3 /* Formation.swift in Sources */,
 				B09A1BE52013C9D900B140A6 /* AppDelegate.swift in Sources */,
 				B09A1C192013CA1A00B140A6 /* Grid.swift in Sources */,
 				B09A1C232013F4D100B140A6 /* Utils.swift in Sources */,
+				B009E41921E140B300B0D70C /* FormationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

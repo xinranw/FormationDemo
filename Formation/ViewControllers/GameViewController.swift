@@ -11,8 +11,7 @@ import SpriteKit
 import GameplayKit
 import FontAwesome_swift
 
-class GameViewController: UIViewController {
-    
+final class GameViewController: UIViewController {
     @IBOutlet private weak var skView: SKView!
     @IBOutlet private weak var addPersonButton: UIButton!
     @IBOutlet private weak var leftButton: UIButton!
@@ -23,40 +22,18 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.leftButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .brands)
-        self.leftButton.setTitle(String.fontAwesomeIcon(name: .chevronLeft), for: .normal)
-        self.rightButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .brands)
-        self.rightButton.setTitle(String.fontAwesomeIcon(name: .chevronRight), for: .normal)
-        
-        
-        if let skView = self.skView {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
-                self.scene = scene
-                
-                scene.size = skView.bounds.size
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                scene.resetScene()
-                
-                // Present the scene
-                skView.presentScene(scene)
-            }
-            
-            skView.ignoresSiblingOrder = true
-            
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-        }
+        // Set up initial data
+        _ = FormationsManager.shared
+        self.setupUI()
+        self.setupSceneKitView()
     }
     
     @IBAction func addPerson() {
-        self.scene?.newPerson()
+        FormationsManager.shared.newPerson()
     }
     
     @IBAction func newFormation() {
-        self.scene?.newFormation()
+        FormationsManager.shared.newFormation()
     }
     
     @IBAction func debug() {
@@ -64,19 +41,18 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func allFormations() {
-        if let scene = scene {
-            print(scene.formations)
-        }
+        print(FormationsManager.shared.formations)
     }
     
     @IBAction func leftButtonTapped() {
-        self.scene?.showPreviousFormation()
+        FormationsManager.shared.previousFormation()
     }
     
     @IBAction func rightButtonTapped() {
-        self.scene?.showNextFormation()
+        FormationsManager.shared.nextFormation()
     }
     
+    // MARK: - UIViewController overrides
     override var shouldAutorotate: Bool {
         return true
     }
@@ -92,5 +68,32 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    // MARK: - Private functions
+    private func setupSceneKitView() {
+        // Load the SKScene from 'GameScene.sks'
+        if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
+            self.scene = scene
+            
+            scene.size = skView.bounds.size
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = .aspectFill
+            
+            scene.formation = FormationsManager.shared.activeFormation
+            
+            // Present the scene
+            skView.presentScene(scene)
+        }
+        
+        self.skView.ignoresSiblingOrder = true
+        self.skView.showsFPS = true
+        self.skView.showsNodeCount = true
+    }
+    
+    private func setupUI() {
+        self.leftButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .brands)
+        self.leftButton.setTitle(String.fontAwesomeIcon(name: .chevronLeft), for: .normal)
+        self.rightButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: .brands)
+        self.rightButton.setTitle(String.fontAwesomeIcon(name: .chevronRight), for: .normal)
+    }
 }
-

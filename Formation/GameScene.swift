@@ -9,75 +9,32 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+final class GameScene: SKScene {
+    var formation: Formation = Formation() {
+        didSet {
+            self.update(with: self.formation)
+        }
+    }
     
     private(set) var grid: Grid?
-    private(set) var formations: [Formation] = []
-    
-    private var people: [Person] = []
-    private var activeFormationIndex: Int = 0
-    private var activeFormation: Formation {
-        return formations[activeFormationIndex]
-    }
-    
+
     override func sceneDidLoad() {
         super.sceneDidLoad()
-        let newFormation = Formation()
-        formations = [newFormation]
     }
     
-    func resetScene() {
+    private func update(with formation: Formation) {
         if self.grid == nil, let newGrid = self.createGrid() {
             self.grid = newGrid
             self.addChild(newGrid)
         }
-        
-        self.activeFormation.reset()
-        
-        self.grid?.update(with: self.activeFormation)
+
+        self.grid?.update(with: formation)
     }
     
-    func newPerson() {
-        let newPerson = Person()
-        newPerson.name = "Person \(self.people.count + 1)"
-        self.addPerson(newPerson)
-    }
-    
-    func addPerson(_ person: Person) {
-        self.people.append(person)
-        self.activeFormation.addPerson(person: person, at: CGPoint.zero)
-        self.grid?.update(with: self.activeFormation)
-    }
-    
-    func newFormation() {
-        let newFormation = Formation()
-        newFormation.index = activeFormationIndex + 1
-        for (person, node) in activeFormation.personNodes {
-            newFormation.addPerson(person: person, at: node.position)
-        }
-        activeFormationIndex += 1
-        formations.append(newFormation)
-        resetScene()
-    }
-    
-    func showPreviousFormation() {
-        if activeFormationIndex > 0 {
-            activeFormationIndex -= 1
-            self.grid?.update(with: self.activeFormation)
-        }
-    }
-    
-    func showNextFormation() {
-        if activeFormationIndex < self.formations.count - 1 {
-            activeFormationIndex += 1
-            self.grid?.update(with: self.activeFormation)
-        }
-    }
     
     override func didMove(to view: SKView) {
         print("did move to view: \(view)")
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
@@ -135,7 +92,7 @@ class GameScene: SKScene {
     
     private func touchDown(atPoint pos : CGPoint) {
         if let person = self.nodes(at: pos).first as? PersonNode {
-            self.activeFormation.deselectAll()
+            self.formation.deselectAll()
             person.isSelected = true
 //            selectedPeople.removeAll()
 //            selectedPeople.append(person)
@@ -146,7 +103,7 @@ class GameScene: SKScene {
     }
     
     private func touchUp(atPoint pos : CGPoint) {
-        self.activeFormation.selectedPersons.forEach { person in
+        self.formation.selectedPersons.forEach { person in
             if let closestCoordinatePoint = self.grid?.closestCoordinatePosition(for: person.position, tolerance: 0.5) {
                 person.position = closestCoordinatePoint
             }
@@ -155,7 +112,7 @@ class GameScene: SKScene {
     }
     
     private func panForTranslation(translation: CGPoint) {
-        self.activeFormation.selectedPersons.forEach { person in
+        self.formation.selectedPersons.forEach { person in
             let position = person.position
             person.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
         }
